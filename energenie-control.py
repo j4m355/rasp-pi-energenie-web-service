@@ -9,7 +9,13 @@ def pi_switch(switch,status):
     print switch
     print "status:"
     print status
-    return "Hello, World!"
+    english = ""
+    if status = 1:
+        english = " on"
+    if status = 0:
+        english = " off"
+    s = "Swith " + switch + " has been switched " + english
+    return s
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
