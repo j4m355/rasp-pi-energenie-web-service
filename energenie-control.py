@@ -1,19 +1,11 @@
 from wsgiref.validate import validator
-from wsgiref.simple_server import make_server
+from flask import Flask
 
-# Our callable object which is intentionally not compliant to the
-# standard, so the validator is going to break
-def simple_app(environ, start_response):
-    status = '200 OK' # HTTP Status
-    headers = [('Content-type', 'text/plain')] # HTTP Headers
-    start_response(status, headers)
+app = Flask(__name__)
 
-    # This is going to break because we need to return a list, and
-    # the validator is going to inform us
-    return 'ret'
+@app.route('/')
+def index():
+    return "Hello, World!"
 
-# This is the application wrapped in a validator
-
-httpd = make_server('', 8000, simple_app)
-print "Listening on port 8000...."
-httpd.serve_forever()
+if __name__ == '__main__':
+    app.run(debug=True)
