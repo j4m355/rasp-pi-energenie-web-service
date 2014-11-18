@@ -1,44 +1,20 @@
-from energenie import switch_on, switch_off
-from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
-import urlparse
+from wsgiref.util import setup_testing_defaults
+from wsgiref.simple_server import make_server
 
-PORT_NUMBER = 8080
+# A relatively simple WSGI application. It's going to print out the
+# environment dictionary after being updated by setup_testing_defaults
+def simple_app(environ, start_response):
+    setup_testing_defaults(environ)
 
-#This class will handles any incoming request from
-#the browser 
-class myHandler(BaseHTTPRequestHandler):
-	
-	#Handler for the GET requests
-	def do_GET(self):
-		self.send_response(200)
-		self.send_header('Content-type','text/html')
-		self.end_headers()
-		o = urlparse.urlparse(self.path)
-		s = urlparse.parse_qs(o.query)
-		# Send the html message
-		self.wfile.write(s)
-		return
-	def do_POST(self):
-		self.send_response(200)
-		self.send_header('Content-type','text/html')
-		self.end_headers()
-		content_len = int(self.headers.getheader('content-length', 0))
-		post_body = self.rfile.read(content_len)
-		print "switch:"
-		print post_body.switch
-		print "status:"
-		print post_body.status
-		self.wfile.write(post_body)
+    status = '200 OK'
+    headers = [('Content-type', 'text/plain')]
 
-try:
-	#Create a web server and define the handler to manage the
-	#incoming request
-	server = HTTPServer(('', PORT_NUMBER), myHandler)
-	print 'Started httpserver on port ' , PORT_NUMBER
-	
-	#Wait forever for incoming htto requests
-	server.serve_forever()
+    start_response(status, headers)
 
-except KeyboardInterrupt:
-	print '^C received, shutting down the web server'
-	server.socket.close()
+    ret = ["%s: %s\n" % (key, value)
+           for key, value in environ.iteritems()]
+    return ret
+
+httpd = make_server('', 8000, simple_app)
+print "Serving on port 8000..."
+httpd.serve_forever()
