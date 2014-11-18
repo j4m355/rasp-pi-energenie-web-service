@@ -1,5 +1,6 @@
 from wsgiref.validate import validator
 from wsgiref.simple_server import make_server
+from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 
 # Our callable object which is intentionally not compliant to the
 # standard, so the validator is going to break
@@ -17,6 +18,6 @@ def simple_app(environ, start_response):
 # This is the application wrapped in a validator
 validator_app = validator(simple_app)
 
-httpd = make_server(self.host, 8000, validator_app)
+httpd = HTTPServer(('', 8080), validator_app)
 print "Listening on port 8000...."
 httpd.serve_forever()
