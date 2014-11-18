@@ -4,9 +4,9 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route('/switch/<switch>/status/<status>', methods=['GET'])
-def piSwitch(switch,status):
+def pi_switch(switch,status):
     print "switch:"
-    print swtich
+    print switch
     print "status:"
     print status
     return "Hello, World!"
