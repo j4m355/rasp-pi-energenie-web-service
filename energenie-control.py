@@ -17,6 +17,6 @@ def simple_app(environ, start_response):
 # This is the application wrapped in a validator
 validator_app = validator(simple_app)
 
-httpd = make_server('localhost', 8000, validator_app)
+httpd = make_server('192.168.80.16', 8000, validator_app)
 print "Listening on port 8000...."
 httpd.serve_forever()
