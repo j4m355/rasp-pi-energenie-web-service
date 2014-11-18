@@ -21,7 +21,7 @@ class myHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 		content_len = int(self.headers.getheader('content-length', 0))
 		post_body = self.rfile.read(content_len)
-		self.wfile.write(post_body)
+		self.wfile.write("egg")
 
 try:
 	#Create a web server and define the handler to manage the
