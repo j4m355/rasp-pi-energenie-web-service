@@ -12,7 +12,7 @@ def pi_plug(plug,status):
     if status == "0":
         english = "off"
         switch_off(int(plug))
-    y = "Everything "
+    y = "Everything"
     x = "Plug " + plug
     s = ""
     z = " has been switched " + english
