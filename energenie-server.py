@@ -18,7 +18,7 @@ def pi_plug(plug,status):
     z = " has been switched " + english
     if plug == 0 :
         s = y + z
-    else
+    else:
         s = x + z
     print s
     return s
