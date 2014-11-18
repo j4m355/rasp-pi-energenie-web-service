@@ -1,6 +1,6 @@
 from energenie import switch_on, switch_off
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
-from urlparse import parse_qs
+import parse_qs
 
 PORT_NUMBER = 8080
 
