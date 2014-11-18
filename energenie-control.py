@@ -1,12 +1,21 @@
 from wsgiref.validate import validator
-from flask import Flask
+from wsgiref.simple_server import make_server
 
-app = Flask(__name__)
+# Our callable object which is intentionally not compliant to the
+# standard, so the validator is going to break
+def simple_app(environ, start_response):
+    status = '200 OK' # HTTP Status
+    headers = [('Content-type', 'text/plain')] # HTTP Headers
+    start_response(status, headers)
 
-@app.route('/')
-def index():
-    return "Hello, World!"
+    # This is going to break because we need to return a list, and
+    # the validator is going to inform us
+    ret = ["%s: %s\n" % (key, value)
+           for key, value in environ.iteritems()]
+    return ret
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
-    app.run(debug=True)
+# This is the application wrapped in a validator
+
+httpd = make_server('0.0.0.0', 8000, simple_app)
+print "Listening on port 8000...."
+httpd.serve_forever()
