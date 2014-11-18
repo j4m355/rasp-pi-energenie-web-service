@@ -10,9 +10,9 @@ def pi_switch(switch,status):
     print "status:"
     print status
     english = ""
-    if status == 1:
+    if status == "1":
         english = " on"
-    if status == 0:
+    if status == "0":
         english = " off"
     s = "Swith " + switch + " has been switched " + english
     return s
