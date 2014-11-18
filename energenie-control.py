@@ -24,6 +24,10 @@ class myHandler(BaseHTTPRequestHandler):
 		self.end_headers()
 		content_len = int(self.headers.getheader('content-length', 0))
 		post_body = self.rfile.read(content_len)
+		print "switch:"
+		print post_body.switch
+		print "status:"
+		print post_body.status
 		self.wfile.write(post_body)
 
 try:
