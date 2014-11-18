@@ -1,18 +1,18 @@
 from flask import Flask, request
-from energenie import switch_on, switch_off
+from energenie import plug_on, plug_off
 
 app = Flask(__name__)
 
-@app.route('/switch/<switch>/status/<status>', methods=['GET'])
-def pi_switch(switch,status):
+@app.route('/plug/<plug>/status/<status>', methods=['GET'])
+def pi_plug(plug,status):
     english = ""
     if status == "1":
         english = "on"
-        switch_on(1)
+        switch_on(int(plug))
     if status == "0":
         english = "off"
-        switch_off(1)
-    s = "Swith " + switch + " has been switched " + english
+        switch_off(int(plug))
+    s = "Swith " + plug + " has been pluged " + english
     print s
     return s
 
