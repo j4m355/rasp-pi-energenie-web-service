@@ -4,7 +4,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route('/switch/<switch>/status/<status>', methods=['GET'])
-def piSwitch():
+def piSwitch(switch,status):
     print "switch:"
     print swtich
     print "status:"
