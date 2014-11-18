@@ -1,5 +1,6 @@
 from energenie import switch_on, switch_off
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
+from urlparse import parse_qs
 
 PORT_NUMBER = 8080
 
@@ -12,8 +13,10 @@ class myHandler(BaseHTTPRequestHandler):
 		self.send_response(200)
 		self.send_header('Content-type','text/html')
 		self.end_headers()
+		o = urlparse.urlparse(self.path)
+		s = urlparse.parse_qs(o.query)
 		# Send the html message
-		self.wfile.write("Hello World !")
+		self.wfile.write(s)
 		return
 	def do_POST(self):
 		self.send_response(200)
