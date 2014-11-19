@@ -1,5 +1,7 @@
 from flask import Flask, request
 from energenie import switch_on, switch_off
+import json
+from collections import namedtuple
 
 app = Flask(__name__)
 
@@ -25,7 +27,8 @@ def pi_plug(plug,status):
 
 @app.route('/', methods=['POST'])
 def json_post():
-    body = request.json
+    data = request.json
+    body = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     print body
     print "plug state:"
     print body.PlugState
