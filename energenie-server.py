@@ -37,7 +37,7 @@ def json_post():
     else:
         print "inside false"        
         switch_off(int(body.PlugNumber))
-    return Response(status=200)
+    return 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
