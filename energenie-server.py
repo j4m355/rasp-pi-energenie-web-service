@@ -27,6 +27,8 @@ def pi_plug(plug,status):
 def json_post():
     body = request.json
     print body
+    print "plug state:"
+    print body.PlugState
     return "egg"
 
 if __name__ == '__main__':
