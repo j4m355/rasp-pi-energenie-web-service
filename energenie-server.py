@@ -31,14 +31,14 @@ def json_post():
     body = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     print body.PlugState
     print body.PlugNumber
-    plugNum = body.PlugNumber
+    plugNum = int(body.PlugNumber)
     if body.PlugState == "true":
         print "inside true"
-        switch_on(int(plugNum))
+        switch_on(plugNum)
     else:
         print "inside false"        
-        switch_off(int(plugNum))
-    return 200
+        switch_off(plugNum)
+    return "200"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
