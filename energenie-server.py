@@ -31,7 +31,7 @@ def json_post():
     body = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     print body.PlugState
     print body.PlugNumber
-    if body.PlugState.lower() == "true":
+    if body.PlugState == "true":
         switch_on(int(body.PlugNumber))
     else:        
         switch_off(int(body.PlugNumber))
