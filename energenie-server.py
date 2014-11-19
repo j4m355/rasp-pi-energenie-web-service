@@ -28,15 +28,14 @@ def pi_plug(plug,status):
 @app.route('/', methods=['POST'])
 def json_post():
     data = request.data
-    print data.PlugState
-    print "data:"
-
-    print data
     body = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
-    print body
-    print "plug state:"
     print body.PlugState
-    return "egg"
+    print body.PlugNumber
+    if body.PlugState == 0:
+        switch_off(int(body.PlugNumber))
+    if body.PlugState == 1:
+        switch_on(int(body.PlugNumber))
+    return Response(status=200)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
