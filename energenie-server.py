@@ -27,7 +27,9 @@ def pi_plug(plug,status):
 
 @app.route('/', methods=['POST'])
 def json_post():
-    data = request.json
+    data = request.data
+    print "data:"
+    print data
     body = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     print body
     print "plug state:"
