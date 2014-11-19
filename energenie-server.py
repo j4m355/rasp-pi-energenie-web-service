@@ -33,7 +33,7 @@ def json_post():
     print body.PlugNumber
     if body.PlugState:
         switch_on(int(body.PlugNumber))
-    else        
+    else:        
         switch_off(int(body.PlugNumber))
     return Response(status=200)
 
