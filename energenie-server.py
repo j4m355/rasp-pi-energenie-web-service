@@ -31,10 +31,10 @@ def json_post():
     body = json.loads(data, object_hook=lambda d: namedtuple('X', d.keys())(*d.values()))
     print body.PlugState
     print body.PlugNumber
-    if body.PlugState == 0:
-        switch_off(int(body.PlugNumber))
-    if body.PlugState == 1:
+    if body.PlugState:
         switch_on(int(body.PlugNumber))
+    else        
+        switch_off(int(body.PlugNumber))
     return Response(status=200)
 
 if __name__ == '__main__':
