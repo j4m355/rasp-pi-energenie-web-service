@@ -23,6 +23,12 @@ def pi_plug(plug,status):
     print s
     return s
 
+@app.route('/', methods=['POST'])
+def json_post():
+    body = request.json
+    print body
+    return "egg"
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
     app.run(debug=True)
