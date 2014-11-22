@@ -14,5 +14,7 @@ To control switches:
                  "PlugState" : "true"
                }
  
- PlugNumber 0 turns all on - 1 and 2 etc control socket 1 and 2 etc
+ 
+ PlugNumber: 0 turns all on - 1 and 2 etc control socket 1 and 2 etc
+
  PlugState: true or false - true turns socket on, false turns socket off
