@@ -12,7 +12,7 @@ def json_post():
     print body.PlugState
     print body.PlugNumber
     plugNum = int(body.PlugNumber)
-    if body.PlugState.lower() == "true":
+    if (body.PlugState == "true") or (body.PlugState == "True"):
         print "inside true"
         switch_on(plugNum)
     else:
