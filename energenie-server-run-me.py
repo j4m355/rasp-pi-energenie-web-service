@@ -5,26 +5,6 @@ from collections import namedtuple
 
 app = Flask(__name__)
 
-@app.route('/plug/<plug>/status/<status>', methods=['GET'])
-def pi_plug(plug,status):
-    english = ""
-    if status == "1":
-        english = "on"
-        switch_on(int(plug))
-    if status == "0":
-        english = "off"
-        switch_off(int(plug))
-    y = "Everything"
-    x = "Plug " + plug
-    s = ""
-    z = " has been switched " + english
-    if plug == "0" :
-        s = y + z
-    else:
-        s = x + z
-    print s
-    return s
-
 @app.route('/', methods=['POST'])
 def json_post():
     data = request.data
