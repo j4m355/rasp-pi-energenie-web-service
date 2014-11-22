@@ -11,10 +11,10 @@ To control switches:
     JSON Body:
               {
                  "PlugNumber" : "0",
-                 "PlugState" : "true"
+                 "PlugState" : "1"
                }
  
  
  PlugNumber: 0 turns all on - 1 and 2 etc control socket 1 and 2 etc
 
- PlugState: true or false - true turns socket on, false turns socket off
+ PlugState: 1 or 0 - 1 turns socket on, 0 turns socket off
