@@ -1,7 +1,7 @@
-rasp-pi-energenie-web-service
-=============================
+A Raspberry Pi Webservice to control Energenie plug sockets
+===========================================================
 
-flask web service for controlling energenie plug sockets via raspberry pi
+Flask web service for controlling energenie plug sockets via raspberry pi
 
 ##Dependencies:
 
