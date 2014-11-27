@@ -1,4 +1,4 @@
-A Raspberry Pi Webservice to control Energenie plug sockets
+A Raspberry Pi Web Service to control Energenie plug sockets
 ===========================================================
 
 Flask web service for controlling energenie plug sockets via raspberry pi
