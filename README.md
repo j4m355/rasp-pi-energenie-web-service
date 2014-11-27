@@ -39,6 +39,6 @@ A sample HTTP POST to turn all (0) sockets on (1)
 	stop on runlevel [016]
 
 	respawn
-	exec python /home/pi/apps/energenie-switch/energenie-server-run-me.py
+	exec python /home/pi/apps/rasp-pi-energenie-web-service/energenie-server-run-me.py
 
 
