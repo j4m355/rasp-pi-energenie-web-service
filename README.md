@@ -14,6 +14,8 @@ Flask web service for controlling energenie plug sockets via raspberry pi
 
 ###To control switches:
 
+A sample HTTP POST to turn all (0) sockets on (1)
+
     HTTP POST to 'http://localhost:5000/'
     JSON Body:
               {
@@ -22,7 +24,7 @@ Flask web service for controlling energenie plug sockets via raspberry pi
                }
  
  
- PlugNumber: 0 turns all on - 1 and 2 etc control socket 1 and 2 etc
+ PlugNumber: 0 controls all sockets - 1 and 2 etc control socket 1 and 2 etc
 
  PlugState: 1 or 0 - 1 turns socket on, 0 turns socket off
 
