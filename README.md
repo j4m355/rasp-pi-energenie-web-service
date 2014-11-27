@@ -26,11 +26,12 @@ flask web service for controlling energenie plug sockets via raspberry pi
 
  PlugState: 1 or 0 - 1 turns socket on, 0 turns socket off
 
- ##To start on boot:
+ 
+##To start on boot:
  	sudo apt-get install upstart
  	sudo nano /etc/init/energenie.conf
 
- ###Insert:
+###Insert:
 
  	start on runlevel [2345]
 	stop on runlevel [016]
